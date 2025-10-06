@@ -7,5 +7,18 @@ def _mot(n: int) -> str:
         return "Buzz"
     return str(n)
 
-def affiche() -> str:
-    return "".join(_mot(n) for n in range(1, 101))
+
+def affiche(n1=None, n2=None) -> str:
+    """
+    Comportements :
+    - affiche()        -> 1..100
+    - affiche(n)       -> 1..n
+    - affiche(n1, n2)  -> n1..n2 (inclusif)
+    """
+    if n1 is None and n2 is None:
+        start, stop = 1, 100
+    elif n2 is None:
+        start, stop = 1, n1
+    else:
+        start, stop = n1, n2
+    return "".join(_mot(i) for i in range(start, stop + 1))
